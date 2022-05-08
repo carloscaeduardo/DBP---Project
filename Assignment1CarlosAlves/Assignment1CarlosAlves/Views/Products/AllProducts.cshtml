@@ -8,10 +8,10 @@
 <table class="table table-striped table-hover table-dark table-bordered">
     <thead class="table-light">
         <tr>
-            <th>Product Code</th>
-            <th>Name</th>
-            <th>Version</th>
-            <th>Release Date</th>
+            <th onclick="sort(0)">Product Code</th>
+            <th onclick="sort(1)">Name</th>
+            <th onclick="sort(2)">Version</th>
+            <th onclick="sort(3)">Release Date</th>
         </tr>
     </thead>
     <tbody>
@@ -26,3 +26,18 @@
             }
     </tbody>
 </table>
+<script>
+    function sort(sortBy) {
+        let isDesc = false;
+
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var isDescUrlParam = url.searchParams.get("isDesc");
+        if (isDescUrlParam == "false") {
+            isDesc = true;
+        }
+
+        window.location.href = "/Products/AllProducts/?sortBy=" + sortBy + "&isDesc=" + isDesc;
+    }
+
+</script>
