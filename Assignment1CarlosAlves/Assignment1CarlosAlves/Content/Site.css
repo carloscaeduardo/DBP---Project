@@ -26,6 +26,6 @@ textarea {
 
 /* set the tables css*/
 
-th:hover {
+.sortable th:hover {
     cursor: pointer;
 }

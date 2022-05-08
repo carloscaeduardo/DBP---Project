@@ -7,7 +7,17 @@
 
 <h2>All Customers Page</h2>
 
-<table class="table table-striped table-hover table-dark table-bordered">
+<div class="row m-2">
+    <div class="col-6">
+        <input id ="textSearch" type="text" name="textSearch" onkeyup="search();" placeholder="Search..." />
+    </div>
+    <div class="col-6">
+        <input type="button" class="btn btn-primary btn-md" name="searchButton" value="Search" onclick="search();" />
+    </div>
+</div>
+
+
+<table class="sortable table table-striped table-hover table-dark table-bordered">
     <thead class="table-light">
         <tr>
             <th onclick="sort(0);">Customer ID</th>
@@ -42,6 +52,22 @@
         }
 
         window.location.href = "/Customers/AllCustomers/?sortBy=" + sortBy + "&isDesc=" + isDesc;
+
+    }
+
+    function search() {
+        // front end search
+        var searchKey = $('#textSearch').val();
+        console.log(searchKey);
+        $('.sortable tbody tr').each(function () {
+            var currentText = $(this).text();
+
+            if (currentText.toLowerCase().indexOf(searchKey.toLowerCase()) == -1) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
     }
 
 </script>
