@@ -3,15 +3,28 @@
     ViewBag.Title = "AllStates";
 }
 
-<h2>All States</h2>
+<h2>All States Page </h2>
+<a href="/States/Add">Add new State</a>
+
+
+<div class="row m-2">
+    <div class="col-6">
+        <input id="txtSearch" type="text" name="textSearch" class="form-control" placeholder="Search..." />
+
+    </div>
+    <div class="col-6">
+        <input type="button" class="btn btn-primary btn-md" name="searchButton" value="Search" onclick="Sortable.Search();" />
+    </div>
+</div>
+
 
 <table class="sortable table table-striped table-hover table-dark table-bordered">
     <thead class="table-light">
         <tr>
-            <th onclick="sort(0)">State Code</th>
-            <th onclick="sort(1)">State Name</th>
-            <th onclick="sort(2)">First Zip Code </th>
-            <th onclick="sort(3)">Last Zip Code</th>
+            <th onclick="Sortable.Sort(0)">State Code</th>
+            <th onclick="Sortable.Sort(1)">State Name</th>
+            <th onclick="Sortable.Sort(2)">First Zip Code </th>
+            <th onclick="Sortable.Sort(3)">Last Zip Code</th>
         </tr>
     </thead>
     <tbody>
@@ -28,6 +41,18 @@
 </table>
 
 <script>
+    
+
+    Sortable.baseUrl = '/States/AllStates/';
+</script>
+
+
+
+
+
+
+
+@*<script>
     function sort(sortBy) {
         let isDesc = false;
 
@@ -41,4 +66,4 @@
         window.location.href = "/States/AllStates/?sortBy=" + sortBy + "&isDesc=" + isDesc;
     }
 
-</script>
+</script>*@

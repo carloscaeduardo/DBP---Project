@@ -1,0 +1,14 @@
+﻿@model  Assignment1CarlosAlves.Models.State
+@{
+    ViewBag.Title = "Add a State";
+}
+
+<h2>AddStates</h2>
+
+<form action="/States/AddStates" method="POST">
+    <input type="text" name="StateCode" />
+    <input type="text" name="StateName" />
+    <input type="text" name="FirstZipCode" />
+    <input type="text" name="LastZipCode" />
+    <input type="submit" value="submit"/>
+</form>
