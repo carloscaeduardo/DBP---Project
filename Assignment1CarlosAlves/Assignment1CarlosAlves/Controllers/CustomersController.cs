@@ -16,7 +16,7 @@ namespace Assignment1CarlosAlves.Controllers
         /// <param name="sortBy"> 0 = Id, 1 = Name, 2 = Email, 3 = State </param>
         /// <param name="isDesc"></param>
         /// <returns></returns>
-        public ActionResult AllCustomers(int sortBy=0, bool isDesc=false)
+        public ActionResult AllCustomers(string id, int sortBy=0, bool isDesc=false)
         {
            
             TechSupportEntities context = new TechSupportEntities();
@@ -57,8 +57,20 @@ namespace Assignment1CarlosAlves.Controllers
                         allCustomers = context.Customers.OrderBy(c => c.CustomerID).ToList();
                     break;
             }
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                id = id.Trim().ToLower();
+                allCustomers = allCustomers.Where(c =>
+                       c.Name.ToLower().Contains(id) ||
+                       c.Email.ToLower().Contains(id) ||
+                       c.State.ToLower().Contains(id)
+                     
+                       ).ToList();
 
+                
+            }
             return View(allCustomers);
+
         }
     }
 }

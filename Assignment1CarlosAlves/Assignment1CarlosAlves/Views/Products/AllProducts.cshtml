@@ -27,17 +27,5 @@
     </tbody>
 </table>
 <script>
-    function sort(sortBy) {
-        let isDesc = false;
-
-        var url_string = window.location.href;
-        var url = new URL(url_string);
-        var isDescUrlParam = url.searchParams.get("isDesc");
-        if (isDescUrlParam == "false") {
-            isDesc = true;
-        }
-
-        window.location.href = "/Products/AllProducts/?sortBy=" + sortBy + "&isDesc=" + isDesc;
-    }
-
+    Sortable.baseUrl = '/Products/AllProducts/';
 </script>

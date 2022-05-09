@@ -9,10 +9,10 @@
 
 <div class="row m-2">
     <div class="col-6">
-        <input id ="textSearch" type="text" name="textSearch" onkeyup="search();" placeholder="Search..." />
+        <input id ="textSearch" type="text" name="textSearch"  placeholder="Search..." />
     </div>
     <div class="col-6">
-        <input type="button" class="btn btn-primary btn-md" name="searchButton" value="Search" onclick="search();" />
+        <input type="button" class="btn btn-primary btn-md" name="searchButton" value="Search" onclick="Sortable.Search();" />
     </div>
 </div>
 
@@ -20,10 +20,10 @@
 <table class="sortable table table-striped table-hover table-dark table-bordered">
     <thead class="table-light">
         <tr>
-            <th onclick="sort(0);">Customer ID</th>
-            <th onclick="sort(1);">Customer Name</th>
-            <th onclick="sort(2);">Customer Email</th>
-            <th onclick="sort(3);">Customer State</th>
+            <th onclick="Sortable.Sort(0);">Customer ID</th>
+            <th onclick="Sortable.Sort(1);">Customer Name</th>
+            <th onclick="Sortable.Sort(2);">Customer Email</th>
+            <th onclick="Sortable.Sort(3);">Customer State</th>
         </tr>
     </thead>
     <tbody>
@@ -41,33 +41,26 @@
 </table>
 
 <script>
-    function sort(sortBy) {
-        let isDesc = false;
+    //function sort(sortBy) {
+    //    let isDesc = false;
 
-        var url_string = window.location.href;
-        var url = new URL(url_string);
-        var isDescUrlParam = url.searchParams.get("isDesc");
-        if (isDescUrlParam == "false") {
-            isDesc = true;
-        }
+    //    var url_string = window.location.href;
+    //    var url = new URL(url_string);
+    //    var isDescUrlParam = url.searchParams.get("isDesc");
+    //    if (isDescUrlParam == "false") {
+    //        isDesc = true;
+    //    }
 
-        window.location.href = "/Customers/AllCustomers/?sortBy=" + sortBy + "&isDesc=" + isDesc;
+    //    window.location.href = "/Customers/AllCustomers/?sortBy=" + sortBy + "&isDesc=" + isDesc;
 
-    }
+    //}
 
-    function search() {
-        // front end search
-        var searchKey = $('#textSearch').val();
-        console.log(searchKey);
-        $('.sortable tbody tr').each(function () {
-            var currentText = $(this).text();
+    //function search() {
+    //    // URL mapping
+    //    // url mappin rerountes the parameters and makes them look like a part of the url
+    //    var searchKey = $('#textSearch').val();
+    //    window.location.href = "/Customers/AllCustomers/" + searchKey;
+    //}
 
-            if (currentText.toLowerCase().indexOf(searchKey.toLowerCase()) == -1) {
-                $(this).hide();
-            } else {
-                $(this).show();
-            }
-        });
-    }
-
+    Sortable.baseUrl = '/Customers/AllCustomers/';
 </script>
