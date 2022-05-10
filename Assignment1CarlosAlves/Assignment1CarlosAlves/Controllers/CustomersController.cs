@@ -72,5 +72,43 @@ namespace Assignment1CarlosAlves.Controllers
             return View(allCustomers);
 
         }
+
+        [HttpGet]
+        public ActionResult AddCustomers()
+        {
+            Customer customer = new Customer();
+            return View(customer);
+        }
+
+        [HttpPost]
+        public ActionResult AddCustomers(Customer customer)
+        {
+            TechSupportEntities context = new TechSupportEntities();
+
+            //Customer customer = new Customer {
+
+            //    Name = name,
+            //    Phone = phone,
+            //    Email = email,
+            //    ZipCode = zipcode,
+            //    Address = address,
+            //    City = city,
+            //    State = stateCode
+
+            //};
+         
+
+            try
+            {
+                context.Customers.Add(customer);
+                context.SaveChanges();
+            }
+            catch(System.Exception ex)
+            {
+                throw ex;
+            }
+            return RedirectToAction("AllCustomers");
+        }
+
     }
 }

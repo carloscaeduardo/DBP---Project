@@ -10,8 +10,6 @@ namespace Assignment1CarlosAlves.Controllers
     public class StatesController : Controller
     {
 
-
-
         // GET: States
         /// <summary>
         /// The view returns a list of all states
@@ -99,9 +97,10 @@ namespace Assignment1CarlosAlves.Controllers
         public ActionResult AddStates()
         {
             State state = new State();
-            return View();
+            return View(state);
         }
 
+        [HttpPost]
         public ActionResult AddStates(State state)
         {
             TechSupportEntities context = new TechSupportEntities();
@@ -109,7 +108,6 @@ namespace Assignment1CarlosAlves.Controllers
             try
             {
                 context.States.Add(state);
-
                 context.SaveChanges();
 
             }
