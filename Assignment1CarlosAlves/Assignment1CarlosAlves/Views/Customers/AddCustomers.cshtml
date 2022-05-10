@@ -9,18 +9,42 @@
 @using (Html.BeginForm("AddCustomers", "Customers", FormMethod.Post))
 {
     @*<div class="form-floating mb-3">
-        @Html.TextBoxFor(c => c.CustomerID, new { @class = "form-control", id = "custId" })
-        @Html.LabelFor(c => c.CustomerID, new { @for ="custId" })
-    </div>*@
-        @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
-        @Html.TextBoxFor(c => c.Address, new { @class = "form-control" })
-        @Html.TextBoxFor(c => c.City, new { @class = "form-control" })
-        @Html.TextBoxFor(c => c.State, new { @class = "form-control" })
-        @Html.TextBoxFor(c => c.ZipCode, new { @class = "form-control" })
-        @Html.TextBoxFor(c => c.Phone, new { @class = "form-control" })
-        @Html.TextBoxFor(c => c.Email, new { @class = "form-control" })
+            @Html.TextBoxFor(c => c.CustomerID, new { @class = "form-control", id = "custId" })
+            @Html.LabelFor(c => c.CustomerID, new { @for ="custId" })
+        </div>*@
+<div class="form-floating mb-3 ">
+    @Html.TextBoxFor(c => c.Name, new { @class = "form-control", @type="name", @placeholder="Customer Name" })
+   <label >Customer Name</label>
+
+</div>
+<div class="form-floating mb-3 ">
+
+    @Html.TextBoxFor(c => c.Address, new { @class = "form-control", @type="address", @placeholder="Customer Address" })
+    <label for="">Customer Address</label>
+</div>
+<div class="form-floating mb-3 ">
+    @Html.TextBoxFor(c => c.City, new { @class = "form-control", @type = "name", @placeholder = "Customer Address" })
+    <label for="">Customer City</label>
+
+</div>
+<div class="form-floating mb-3 ">
+    @Html.TextBoxFor(c => c.State, new { @class = "form-control", @type = "stateCode", @placeholder = "Customer Address" })
+    <label class="">Customer State Code</label>
+</div>
+<div class="form-floating mb-3 ">
+    @Html.TextBoxFor(c => c.ZipCode, new { @class = "form-control", @type = "zipCode", @placeholder = "Customer Address" })
+    <label class="">Customer Zip Code</label>
+</div>
+<div class="form-floating mb-3 ">
+    @Html.TextBoxFor(c => c.Phone, new { @class = "form-control", @type = "Phone", @placeholder = "Customer Address" })
+    <label class="">Customer Phone</label>
+</div>
+<div class="form-floating mb-3 ">
+    @Html.TextBoxFor(c => c.Email, new { @class = "form-control", @type = "email", @placeholder = "Customer Address" })
+    <label class="">Customer Email</label>
+</div>
 
 
-        <input type="submit" value="submit" />
-        }
-        
+    <input type="submit" value="submit" />
+}
+
