@@ -1,6 +1,6 @@
 ﻿@model  Assignment1CarlosAlves.Models.State
 @{
-    ViewBag.Title = "Add a State";
+    ViewBag.Title = "Upsert a State";
 }
 
 <h2>Add States</h2>
@@ -13,7 +13,7 @@
     <input type="submit" value="submit" />
 </form>*@
 
-@using (Html.BeginForm("AddStates", "States", FormMethod.Post))
+@using (Html.BeginForm("UpsertStates", "States", FormMethod.Post))
 {
     @Html.TextBoxFor(s => s.StateCode, new { @class = "form-control" } )
     @Html.TextBoxFor(s => s.StateName, new { @class = "form-control" })

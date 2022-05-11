@@ -249,7 +249,7 @@
     <Content Include="Views\Products\AllProducts.cshtml" />
     <Content Include="Views\Technicians\AllTechnicians.cshtml" />
     <Content Include="Views\States\AllStates.cshtml" />
-    <Content Include="Views\States\AddStates.cshtml" />
+    <Content Include="Views\States\UpsertStates.cshtml" />
     <Content Include="Views\Customers\AddCustomers.cshtml" />
   </ItemGroup>
   <ItemGroup />

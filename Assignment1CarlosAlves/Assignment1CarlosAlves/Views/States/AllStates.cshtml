@@ -4,7 +4,7 @@
 }
 
 <h2>All States Page </h2>
-<button class="btn btn-primary"><a class="text-decoration-none link-light" href="/States/AddStates">Add new State</a></button>
+<button class="btn btn-primary"><a class="text-decoration-none link-light" href="/States/UpsertStates">Add new State</a></button>
 
 
 <div class="row m-2">
@@ -25,6 +25,7 @@
             <th onclick="Sortable.Sort(1)">State Name</th>
             <th onclick="Sortable.Sort(2)">First Zip Code </th>
             <th onclick="Sortable.Sort(3)">Last Zip Code</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +36,9 @@
                 <td>@state.StateName</td>
                 <td>@state.FirstZipCode</td>
                 <td>@state.LastZipCode</td>
+                <td>
+                    <button  class="btn btn-primary"><a href="/States/UpsertStates/@state.StateCode" class="text-decoration-none link-light">Edit</a></button>
+                </td>
             </tr>
         }
     </tbody>

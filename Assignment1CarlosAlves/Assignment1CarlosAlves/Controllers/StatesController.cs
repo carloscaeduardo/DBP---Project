@@ -94,20 +94,33 @@ namespace Assignment1CarlosAlves.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddStates()
+        public ActionResult UpsertStates(string id)
         {
-            State state = new State();
+            //State state = new State();
+            TechSupportEntities context = new TechSupportEntities();
+            State state = context.States.Where(s => s.StateCode == id).FirstOrDefault();
+
             return View(state);
         }
 
         [HttpPost]
-        public ActionResult AddStates(State state)
+        public ActionResult UpsertStates(State newState)
         {
-            TechSupportEntities context = new TechSupportEntities();
+            TechSupportEntities context = new TechSupportEntities( );
 
             try
             {
-                context.States.Add(state);
+                if (context.States.Where(s => s.StateCode == newState.StateCode).Count() > 0)
+                {
+                    var stateToSave = context.States.Where(s => s.StateCode == newState.StateCode).FirstOrDefault();
+                    stateToSave.StateName = newState.StateName;
+                    stateToSave.FirstZipCode = newState.FirstZipCode;
+                    stateToSave.LastZipCode = newState.LastZipCode;
+                }
+                else{
+                    context.States.Add(newState);
+                }
+             
                 context.SaveChanges();
 
             }
