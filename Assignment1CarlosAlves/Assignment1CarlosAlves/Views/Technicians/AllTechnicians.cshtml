@@ -5,17 +5,30 @@
 
 <h2>All Technicians</h2>
 
+<button class="btn btn-primary"><a class="text-decoration-none link-light" href="/Technicians/UpsertTechnician">Add new Technician</a></button>
+
+<div class="row m-2">
+    <div class="col-4">
+        <input class="form-control" id="txtSearch" type="text" name="textSearch" placeholder="Search..." />
+    </div>
+    <div class="col-3">
+        <input type="button" class="btn btn-primary btn-md" name="searchButton" value="Search" onclick="Sortable.Search();" />
+    </div>
+</div>
+
+
 <table class="sortable table table-striped table-hover table-dark table-bordered">
     <thead class="table-light">
         <tr>
-            <th onclick="sort(0);">Technician ID</th>
-            <th onclick="sort(1);">Name</th>
-            <th onclick="sort(2);">Email</th>
-            <th onclick="sort(3);">Phone</th>
-
+            <th onclick="Sortable.Sort(0);">TEchnician ID</th>
+            <th onclick="Sortable.Sort(1);">Technician Name</th>
+            <th onclick="Sortable.Sort(2);">Technician Email</th>
+            <th onclick="Sortable.Sort(3);">Technician Phone</th>
+            <th> Edit</th>
         </tr>
     </thead>
     <tbody>
+        @* Lopp throuh the "allcustomers" list to display CustomerID and Customer Name *@
         @foreach (var technician in Model)
         {
             <tr>
@@ -23,24 +36,15 @@
                 <td>@technician.Name</td>
                 <td>@technician.Email</td>
                 <td>@technician.Phone</td>
+                <td>
+                    <button class="btn btn-primary"><a href="/Technicians/UpsertTechnician/@technician.TechID" class="text-decoration-none link-light">Edit</a></button>
+                </td>
             </tr>
         }
     </tbody>
-    
 </table>
 
 <script>
-    function sort(sortBy) {
-        let isDesc = false;
-
-        var url_string = window.location.href;
-        var url = new URL(url_string);
-        var isDescUrlParam = url.searchParams.get("isDesc");
-        if (isDescUrlParam == "false") {
-            isDesc = true;
-        }
-
-        window.location.href = "/Technicians/AllTechnicians/?sortBy=" + sortBy + "&isDesc=" + isDesc;
-    }
+    Sortable.baseUrl = '/Technicians/AllTechnicians/';
 
 </script>

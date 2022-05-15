@@ -69,19 +69,22 @@ namespace Assignment1CarlosAlves.Controllers
 
                 
             }
+
             return View(allCustomers);
 
         }
 
         [HttpGet]
-        public ActionResult AddCustomers()
+        public ActionResult UpsertCustomers(string id)
         {
-            Customer customer = new Customer();
+            TechSupportEntities context = new TechSupportEntities();
+            //Customer customer = new Customer();
+            Customer customer = context.Customers.Where(c => c.CustomerID.ToString() == id).FirstOrDefault();
             return View(customer);
         }
 
         [HttpPost]
-        public ActionResult AddCustomers(Customer customer)
+        public ActionResult UpsertCustomers(Customer newCustomer)
         {
             TechSupportEntities context = new TechSupportEntities();
 
@@ -96,12 +99,29 @@ namespace Assignment1CarlosAlves.Controllers
             //    State = stateCode
 
             //};
-         
+            
 
             try
             {
-                context.Customers.Add(customer);
+                if(context.Customers.Where(c => c.CustomerID == newCustomer.CustomerID).Count() > 0)
+                {
+                    var customerToSave = context.Customers.Where(c => c.CustomerID == newCustomer.CustomerID).FirstOrDefault();
+                    customerToSave.Name = newCustomer.Name;
+                    customerToSave.Phone = newCustomer.Phone;
+                    customerToSave.Email = newCustomer.Email;
+                    customerToSave.ZipCode = newCustomer.ZipCode;
+                    customerToSave.City = newCustomer.City;
+                    customerToSave.State = newCustomer.State;
+
+                }
+                else
+                {
+                    context.Customers.Add(newCustomer);
+                    Console.WriteLine(newCustomer.CustomerID);
+                    
+                }
                 context.SaveChanges();
+
             }
             catch(System.Exception ex)
             {
@@ -110,5 +130,8 @@ namespace Assignment1CarlosAlves.Controllers
             return RedirectToAction("AllCustomers");
         }
 
+        
+
     }
 }
+

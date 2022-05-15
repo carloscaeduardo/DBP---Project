@@ -90,6 +90,11 @@ namespace Assignment1CarlosAlves.Controllers
 
             }
 
+            foreach (var state in states)
+            {
+                int numOfCustomers = state.Customers.Count();
+            }
+
             return View(states);
         }
 
@@ -129,9 +134,12 @@ namespace Assignment1CarlosAlves.Controllers
                 //log the exception in the error log and send an automatic email to IT support
                 //throw;
             }
-            return RedirectToAction("AllStates");
-        }
 
+            
+
+             return RedirectToAction("AllStates");
+        }
+       
 
     }
 

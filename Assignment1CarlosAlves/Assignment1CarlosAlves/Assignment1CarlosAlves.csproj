@@ -137,6 +137,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -250,7 +251,10 @@
     <Content Include="Views\Technicians\AllTechnicians.cshtml" />
     <Content Include="Views\States\AllStates.cshtml" />
     <Content Include="Views\States\UpsertStates.cshtml" />
-    <Content Include="Views\Customers\AddCustomers.cshtml" />
+    <Content Include="Views\Customers\UpsertCustomers.cshtml" />
+    <Content Include="Views\Incidents\UpsertIncidents.cshtml" />
+    <Content Include="Views\Products\UpsertProducts.cshtml" />
+    <Content Include="Views\Technicians\UpsertTechnician.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

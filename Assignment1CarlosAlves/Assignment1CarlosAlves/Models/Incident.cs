@@ -26,5 +26,6 @@ namespace Assignment1CarlosAlves.Models
         public virtual Customer Customer { get; set; }
         public virtual Product Product { get; set; }
         public virtual Technician Technician { get; set; }
+
     }
 }

@@ -12,7 +12,7 @@ namespace Assignment1CarlosAlves.Controllers
     {
         // GET: Incidents
 
-        public ActionResult AllIncidents(int sortBy=0, bool isDesc = false)
+        public ActionResult AllIncidents(string id, int sortBy=0, bool isDesc = false)
         {
             TechSupportEntities context = new TechSupportEntities();
             List<Incident> incidents;
@@ -80,8 +80,86 @@ namespace Assignment1CarlosAlves.Controllers
                     }
                     break;
             }
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                id = id.Trim().ToLower();
+                int incidentsLookUp = 0;
+
+
+                //in case id is an integer
+                if (int.TryParse(id, out incidentsLookUp))
+                {
+                    Console.WriteLine(id);
+                    incidents = incidents.Where(i =>
+                               i.IncidentID == incidentsLookUp
+                               ).ToList();
+
+
+                }
+                else // if id does not parse
+                {
+                    incidents = incidents.Where(i =>
+                     i.Title.ToLower().Contains(id) ||
+                      i.Description.ToLower().Contains(id)
+                     
+                      ).ToList();
+                }
+
+
+            }
 
             return View(incidents);
         }
+
+
+        [HttpGet]
+        public ActionResult UpsertIncidents(string id)
+        {
+            TechSupportEntities context = new TechSupportEntities();
+            Incident incident = context.Incidents.Where(i => i.IncidentID.ToString() == id).FirstOrDefault();
+
+            return View(incident);
+
+        }
+
+        [HttpPost]
+        public ActionResult UpsertIncidents(Incident newIncident)
+        {
+            TechSupportEntities context = new TechSupportEntities();
+            try
+            {
+                if(context.Incidents.Where(i => i.IncidentID == newIncident.IncidentID).Count() > 0 )
+                {
+                    var incidentToSave = context.Incidents.Where(i => i.IncidentID == newIncident.IncidentID).FirstOrDefault();
+                    incidentToSave.IncidentID = newIncident.IncidentID;
+                    incidentToSave.Title = newIncident.Title;
+                    incidentToSave.Description = newIncident.Description;
+                    incidentToSave.DateOpened = newIncident.DateOpened;
+                    incidentToSave.DateClosed = newIncident.DateClosed;
+                    incidentToSave.ProductCode = newIncident.ProductCode;
+                    incidentToSave.TechID = newIncident.TechID;
+                    incidentToSave.Customer.CustomerID = newIncident.Customer.CustomerID;
+                    incidentToSave.Product.ProductCode = newIncident.Product.ProductCode;
+                    incidentToSave.Technician.TechID = newIncident.Technician.TechID;
+                    
+                }
+                else
+                {
+                    context.Incidents.Add(newIncident);
+                }
+                context.SaveChanges();
+
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            return RedirectToAction("AllIncidents");
+        }
+
     }
+
+   
+
+
 }

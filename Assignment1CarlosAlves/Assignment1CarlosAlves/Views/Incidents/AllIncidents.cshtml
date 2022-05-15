@@ -4,6 +4,15 @@
 }
 
 <h2>All Incidents Page</h2>
+<button class="btn btn-primary"><a class="text-decoration-none link-light" href="/Incidents/UpsertIncidents">Add new incident</a></button>
+<div class="row m-2">
+    <div class="col-4">
+        <input class="form-control" id="txtSearch" type="text" name="textSearch" placeholder="Search..." />
+    </div>
+    <div class="col-3">
+        <input type="button" class="btn btn-primary btn-md" name="searchButton" value="Search" onclick="Sortable.Search();" />
+    </div>
+</div>
 
 <table class="sortable table table-striped table-hover table-dark table-bordered">
     <thead class="table-light">
@@ -15,38 +24,31 @@
             <th onclick="sort(4)">Date Closed</th>
             <th onclick="sort(5)">Product Code</th>
             <th onclick="sort(6)">Tech ID</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var incident in Model)
         {
-        <tr>
-            <td>@incident.IncidentID</td>
-            <td>@incident.Title</td>
-            <td>@incident.Description</td>
-            <td>@incident.DateOpened</td>
-            <td>@incident.DateClosed</td>
-            <td>@incident.ProductCode</td>
-            <td>@incident.TechID</td>
+            <tr>
+                <td>@incident.IncidentID</td>
+                <td>@incident.Title</td>
+                <td>@incident.Description</td>
+                <td>@incident.DateOpened</td>
+                <td>@incident.DateClosed</td>
+                <td>@incident.ProductCode</td>
+                <td>@incident.TechID</td>
+                <td>
+                    <button class="btn btn-primary"><a href="/Incidents/UpsertIncidents/@incident.IncidentID" class="text-decoration-none link-light">Edit</a></button>
+                </td>
 
-        </tr>
+            </tr>
         }
 
     </tbody>
 </table>
 
 <script>
-    function sort(sortBy) {
-        let isDesc = false;
-
-        var url_string = window.location.href;
-        var url = new URL(url_string);
-        var isDescUrlParam = url.searchParams.get("isDesc");
-        if (isDescUrlParam == "false") {
-            isDesc = true;
-        }
-
-        window.location.href = "/Incidents/AllIncidents/?sortBy=" + sortBy + "&isDesc=" + isDesc;
-    }
+    Sortable.baseUrl = '/Incidents/AllIncidents/';
 
 </script>

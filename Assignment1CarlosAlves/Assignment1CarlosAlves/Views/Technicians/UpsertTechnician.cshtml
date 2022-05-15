@@ -1,0 +1,38 @@
+﻿@model  Assignment1CarlosAlves.Models.Technician
+@{
+    ViewBag.Title = "UpsertTechnician";
+}
+
+<h2>UpsertTechnician</h2>
+
+@using (Html.BeginForm("UpsertTechnician", "Technicians", FormMethod.Post))
+{
+    @*<div class="form-floating mb-3">
+            @Html.TextBoxFor(c => c.CustomerID, new { @class = "form-control", id = "custId" })
+            @Html.LabelFor(c => c.CustomerID, new { @for ="custId" })
+        </div>*@
+
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(t => t.TechID, new { @class = "form-control", @type = "ID", @placeholder = "Technician ID" })
+        <label>Technician ID</label>
+
+    </div>
+
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(t => t.Name, new { @class = "form-control", @type = "name", @placeholder = "Technician Name" })
+        <label>Technician Name</label>
+
+    </div>
+    <div class="form-floating mb-3 ">
+
+        @Html.TextBoxFor(t => t.Email, new { @class = "form-control", @type = "address", @placeholder = "Technician Email" })
+        <label for="">Technician Email</label>
+    </div>
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(t => t.Phone , new { @class = "form-control", @type = "name", @placeholder = "Phone number" })
+        <label for="">Phone number</label>
+
+    </div>
+    
+    <input type="submit" value="submit" class="btn btn-info" />
+}

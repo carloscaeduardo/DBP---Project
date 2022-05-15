@@ -1,17 +1,24 @@
 ﻿@model  Assignment1CarlosAlves.Models.Customer
 @{
-    ViewBag.Title = "Add a Customer";
+    ViewBag.Title = "Add or edit a Customer";
 }
 
 <h2>Add Customers</h2>
 
 
-@using (Html.BeginForm("AddCustomers", "Customers", FormMethod.Post))
+@using (Html.BeginForm("UpsertCustomers", "Customers", FormMethod.Post))
 {
     @*<div class="form-floating mb-3">
             @Html.TextBoxFor(c => c.CustomerID, new { @class = "form-control", id = "custId" })
             @Html.LabelFor(c => c.CustomerID, new { @for ="custId" })
         </div>*@
+
+@*<div class="form-floating mb-3 ">
+    @Html.TextBoxFor(c => c.CustomerID, new { @class = "form-control", @type = "ID", @placeholder = "Customer ID" })
+    <label>Customer ID</label>
+
+</div>*@
+
 <div class="form-floating mb-3 ">
     @Html.TextBoxFor(c => c.Name, new { @class = "form-control", @type="name", @placeholder="Customer Name" })
    <label >Customer Name</label>
@@ -44,7 +51,9 @@
     <label class="">Customer Email</label>
 </div>
 
-
-    <input type="submit" value="submit" />
+<input type="submit" value="submit" class="btn btn-info" />
 }
+
+
+
 

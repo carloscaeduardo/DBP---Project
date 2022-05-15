@@ -1,0 +1,57 @@
+﻿@model Assignment1CarlosAlves.Models.Incident
+@{
+    ViewBag.Title = "UpsertIncidents";
+}
+
+<h2>UpsertIncidents</h2>
+
+
+@using (Html.BeginForm("UpsertIncidents", "Incidents", FormMethod.Post))
+{
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(i => i.IncidentID, new { @class = "form-control", @type = "ID", @placeholder = "Incident ID" })
+        <label>Incident ID</label>
+
+    </div>
+
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(i => i.Title, new { @class = "form-control", @type = "ID", @placeholder = "Incident Title" })
+        <label>Incident Title</label>
+    </div>
+    <div class="form-floating mb-3 ">
+
+        @Html.TextBoxFor(i => i.Description, new { @class = "form-control", @type = "ID", @placeholder = "Incident Description" })
+        <label for="">Incident Description</label>
+    </div>
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(i => i.DateOpened, new { @class = "form-control", @type = "ID", @placeholder = "Incident Date Opened" })
+        <label for="">Incident Date Opened</label>
+
+    </div>
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(i => i.DateClosed, new { @class = "form-control", @type = "ID", @placeholder = "Incident Date Closed" })
+        <label class="">Incident Date Closed</label>
+    </div>
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(i => i.ProductCode, new { @class = "form-control", @type = "ID", @placeholder = "Product Code" })
+        <label class="">Product Code</label>
+    </div>
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(i => i.TechID, new { @class = "form-control", @type = "ID", @placeholder = "Technician ID" })
+        <label class="">Technician id</label>
+    </div>
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(i => i.Technician, new { @class = "form-control", @type = "ID", @placeholder = "Technician" })
+        <label class="">Technician </label>
+    </div>
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(i => i.Customer, new { @class = "form-control", @type = "ID", @placeholder = "Customer" })
+        <label class="">Customer</label>
+    </div>
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(i => i.Product, new { @class = "form-control", @type = "ID", @placeholder = "Product" })
+        <label class="">Product</label>
+    </div>
+
+    <input type="submit" value="submit" class="btn btn-info" />
+}

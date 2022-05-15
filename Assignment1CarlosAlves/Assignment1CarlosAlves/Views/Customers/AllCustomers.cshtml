@@ -7,7 +7,7 @@
 
 <h2>All Customers Page</h2>
 
-<button class="btn btn-primary"><a class="text-decoration-none link-light" href="/Customers/AddCustomers">Add new customer</a></button>
+<button class="btn btn-primary"><a class="text-decoration-none link-light" href="/Customers/UpsertCustomers">Add new customer</a></button>
 
 <div class="row m-2">
     <div class="col-4">
@@ -26,18 +26,22 @@
             <th onclick="Sortable.Sort(1);">Customer Name</th>
             <th onclick="Sortable.Sort(2);">Customer Email</th>
             <th onclick="Sortable.Sort(3);">Customer State</th>
+            <th> Edit</th>
         </tr>
     </thead>
     <tbody>
         @* Lopp throuh the "allcustomers" list to display CustomerID and Customer Name *@
         @foreach (var customer in Model)
         {
-            <tr>
-                <td>@customer.CustomerID</td>
-                <td>@customer.Name</td>
-                <td>@customer.Email</td>
-                <td>@customer.State1.StateName</td>
-            </tr>
+        <tr>
+            <td>@customer.CustomerID</td>
+            <td>@customer.Name</td>
+            <td>@customer.Email</td>
+            <td>@customer.State1.StateName</td>
+            <td>
+                <button class="btn btn-primary"><a href="/Customers/UpsertCustomers/@customer.CustomerID" class="text-decoration-none link-light">Edit</a></button>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

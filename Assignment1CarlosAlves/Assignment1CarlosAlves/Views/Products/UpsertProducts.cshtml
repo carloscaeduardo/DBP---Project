@@ -1,0 +1,42 @@
+﻿@model  Assignment1CarlosAlves.Models.Product
+@{
+    ViewBag.Title = "Upsert Products";
+}
+
+<h2>UpsertProducts</h2>
+
+
+
+@using (Html.BeginForm("UpsertProducts", "Products", FormMethod.Post))
+{
+    @*<div class="form-floating mb-3">
+            @Html.TextBoxFor(c => c.CustomerID, new { @class = "form-control", id = "custId" })
+            @Html.LabelFor(c => c.CustomerID, new { @for ="custId" })
+        </div>*@
+
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(p => p.ProductCode, new { @class = "form-control", @type = "ID", @placeholder = "Product code" })
+        <label>Product Code</label>
+
+    </div>
+
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(p => p.Name, new { @class = "form-control", @type = "name", @placeholder = "Product Name" })
+        <label>Product Name</label>
+
+    </div>
+    <div class="form-floating mb-3 ">
+
+        @Html.TextBoxFor(p => p.Version, new { @class = "form-control", @type = "address", @placeholder = "Product Version" })
+        <label for="">Product Version</label>
+    </div>
+    <div class="form-floating mb-3 ">
+        @Html.TextBoxFor(p => p.ReleaseDate, new { @class = "form-control", @type = "name", @placeholder = "Release date" })
+        <label for="">Release date</label>
+
+    </div>
+    
+
+    <input type="submit" value="submit" class="btn btn-info" />
+}
+

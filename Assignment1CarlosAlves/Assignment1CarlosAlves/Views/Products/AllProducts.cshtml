@@ -5,27 +5,45 @@
 
 <h2>All Products</h2>
 
-<table class=" sortable table table-striped table-hover table-dark table-bordered">
+<<button class="btn btn-primary"><a class="text-decoration-none link-light" href="/Products/UpsertProducts">Add new Product</a></button>
+
+<div class="row m-2">
+    <div class="col-4">
+        <input class="form-control" id="txtSearch" type="text" name="textSearch" placeholder="Search..." />
+    </div>
+    <div class="col-3">
+        <input type="button" class="btn btn-primary btn-md" name="searchButton" value="Search" onclick="Sortable.Search();" />
+    </div>
+</div>
+
+
+<table class="sortable table table-striped table-hover table-dark table-bordered">
     <thead class="table-light">
         <tr>
-            <th onclick="sort(0)">Product Code</th>
-            <th onclick="sort(1)">Name</th>
-            <th onclick="sort(2)">Version</th>
-            <th onclick="sort(3)">Release Date</th>
+            <th onclick="Sortable.Sort(0);">Product code</th>
+            <th onclick="Sortable.Sort(1);">Product Name</th>
+            <th onclick="Sortable.Sort(2);">Product Version</th>
+            <th onclick="Sortable.Sort(3);">Release date</th>
+            <th> Edit</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var product in Model)
-            {
-                <tr>
-                    <td>@product.ProductCode</td>
-                    <td>@product.Name</td>
-                    <td>@product.Version</td>
-                    <td>@product.ReleaseDate</td>
-                </tr>
-            }
+        @* Lopp throuh the "allcustomers" list to display CustomerID and Customer Name *@
+        @foreach (var products in Model)
+        {
+            <tr>
+                <td>@products.ProductCode</td>
+                <td>@products.Name</td>
+                <td>@products.Version</td>
+                <td>@products.ReleaseDate</td>
+                <td>
+                    <button class="btn btn-primary"><a href="/Products/UpsertProducts/@products.ProductCode" class="text-decoration-none link-light">Edit</a></button>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
 <script>
     Sortable.baseUrl = '/Products/AllProducts/';
 </script>
