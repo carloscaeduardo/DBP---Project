@@ -1,4 +1,4 @@
-﻿@model  Assignment1CarlosAlves.Models.Customer
+﻿@model  Assignment1CarlosAlves.Models.UpsertCustomerModel
 @{
     ViewBag.Title = "Add or edit a Customer";
 }
@@ -8,47 +8,51 @@
 
 @using (Html.BeginForm("UpsertCustomers", "Customers", FormMethod.Post))
 {
-    @*<div class="form-floating mb-3">
-            @Html.TextBoxFor(c => c.CustomerID, new { @class = "form-control", id = "custId" })
-            @Html.LabelFor(c => c.CustomerID, new { @for ="custId" })
-        </div>*@
-
-@*<div class="form-floating mb-3 ">
-    @Html.TextBoxFor(c => c.CustomerID, new { @class = "form-control", @type = "ID", @placeholder = "Customer ID" })
-    <label>Customer ID</label>
-
-</div>*@
+    
 
 <div class="form-floating mb-3 ">
-    @Html.TextBoxFor(c => c.Name, new { @class = "form-control", @type="name", @placeholder="Customer Name" })
+    @Html.TextBoxFor(gm => gm.Customer.Name, new { @class = "form-control", @type="name", @placeholder="Customer Name" })
    <label >Customer Name</label>
 
 </div>
 <div class="form-floating mb-3 ">
 
-    @Html.TextBoxFor(c => c.Address, new { @class = "form-control", @type="address", @placeholder="Customer Address" })
+    @Html.TextBoxFor(gm => gm.Customer.Address, new { @class = "form-control", @type="address", @placeholder="Customer Address" })
     <label for="">Customer Address</label>
 </div>
 <div class="form-floating mb-3 ">
-    @Html.TextBoxFor(c => c.City, new { @class = "form-control", @type = "name", @placeholder = "Customer Address" })
+    @Html.TextBoxFor(gm => gm.Customer.City, new { @class = "form-control", @type = "name", @placeholder = "Customer Address" })
     <label for="">Customer City</label>
 
 </div>
 <div class="form-floating mb-3 ">
-    @Html.TextBoxFor(c => c.State, new { @class = "form-control", @type = "stateCode", @placeholder = "Customer Address" })
+    @Html.TextBoxFor(gm => gm.Customer.State, new { @class = "form-control", @type = "stateCode", @placeholder = "Customer Address" })
     <label class="">Customer State Code</label>
 </div>
 <div class="form-floating mb-3 ">
-    @Html.TextBoxFor(c => c.ZipCode, new { @class = "form-control", @type = "zipCode", @placeholder = "Customer Address" })
+    @Html.TextBoxFor(gm => gm.Customer.ZipCode, new { @class = "form-control", @type = "zipCode", @placeholder = "Customer Address" })
     <label class="">Customer Zip Code</label>
 </div>
 <div class="form-floating mb-3 ">
-    @Html.TextBoxFor(c => c.Phone, new { @class = "form-control", @type = "Phone", @placeholder = "Customer Address" })
+    @Html.TextBoxFor(gm => gm.Customer.Phone, new { @class = "form-control", @type = "Phone", @placeholder = "Customer Address" })
     <label class="">Customer Phone</label>
 </div>
 <div class="form-floating mb-3 ">
-    @Html.TextBoxFor(c => c.Email, new { @class = "form-control", @type = "email", @placeholder = "Customer Address" })
+    @Html.TextBoxFor(gm => gm.Customer.Email, new { @class = "form-control", @type = "email", @placeholder = "Customer Address" })
     <label class="">Customer Email</label>
+</div>
+<div class="form-floating mb-3 ">
+    <h5 class="text-light">State Code</h5>
+
+    <select name="Customer.State" class="form-control">
+        @foreach (var state in Model.States)
+        {
+
+            <option class="form-control" , type="email" , placeholder="State Code" value="@state.StateCode">@state.StateName</option>
+        }
+    </select>
+
+
 </div>
 
 <input type="submit" value="submit" class="btn btn-info" />

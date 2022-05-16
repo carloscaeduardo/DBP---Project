@@ -155,10 +155,10 @@ C:\Users\carlo\Documents\NBCC\Spring 2022\DBProgramming\classes program\Assignme
 C:\Users\carlo\Documents\NBCC\Spring 2022\DBProgramming\classes program\Assignment1CarlosAlves\Assignment1CarlosAlves\bin\Newtonsoft.Json.xml
 C:\Users\carlo\Documents\NBCC\Spring 2022\DBProgramming\classes program\Assignment1CarlosAlves\Assignment1CarlosAlves\bin\Antlr3.Runtime.pdb
 C:\Users\carlo\Documents\NBCC\Spring 2022\DBProgramming\classes program\Assignment1CarlosAlves\Assignment1CarlosAlves\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\carlo\Documents\NBCC\Spring 2022\DBProgramming\classes program\Assignment1CarlosAlves\Assignment1CarlosAlves\obj\Debug\Assignment1CarlosAlves.csproj.AssemblyReference.cache
 C:\Users\carlo\Documents\NBCC\Spring 2022\DBProgramming\classes program\Assignment1CarlosAlves\Assignment1CarlosAlves\obj\Debug\Assignment1CarlosAlves.csproj.CoreCompileInputs.cache
 C:\Users\carlo\Documents\NBCC\Spring 2022\DBProgramming\classes program\Assignment1CarlosAlves\Assignment1CarlosAlves\obj\Debug\Assignment1CarlosAlves.csproj.CopyComplete
 C:\Users\carlo\Documents\NBCC\Spring 2022\DBProgramming\classes program\Assignment1CarlosAlves\Assignment1CarlosAlves\obj\Debug\Assignment1CarlosAlves.dll
 C:\Users\carlo\Documents\NBCC\Spring 2022\DBProgramming\classes program\Assignment1CarlosAlves\Assignment1CarlosAlves\obj\Debug\Assignment1CarlosAlves.pdb
 C:\Users\carlo\Documents\NBCC\Spring 2022\DBProgramming\classes program\Assignment1CarlosAlves\Assignment1CarlosAlves\bin\EntityFramework.SqlServer.dll
 C:\Users\carlo\Documents\NBCC\Spring 2022\DBProgramming\classes program\Assignment1CarlosAlves\Assignment1CarlosAlves\bin\EntityFramework.SqlServer.xml
+C:\Users\carlo\Documents\NBCC\Spring 2022\DBProgramming\classes program\Assignment1CarlosAlves\Assignment1CarlosAlves\obj\Debug\Assignment1CarlosAlves.csproj.AssemblyReference.cache

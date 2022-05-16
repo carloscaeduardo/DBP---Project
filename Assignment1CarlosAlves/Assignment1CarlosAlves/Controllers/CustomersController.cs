@@ -80,12 +80,20 @@ namespace Assignment1CarlosAlves.Controllers
             TechSupportEntities context = new TechSupportEntities();
             //Customer customer = new Customer();
             Customer customer = context.Customers.Where(c => c.CustomerID.ToString() == id).FirstOrDefault();
-            return View(customer);
+            List<State> states = context.States.ToList();
+            UpsertCustomerModel viewModel = new UpsertCustomerModel()
+            {
+                Customer = customer,
+                States = states,
+            };
+            
+            return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult UpsertCustomers(Customer newCustomer)
+        public ActionResult UpsertCustomers(UpsertCustomerModel model)
         {
+            Customer newCustomer = model.Customer;
             TechSupportEntities context = new TechSupportEntities();
 
             //Customer customer = new Customer {
@@ -112,12 +120,13 @@ namespace Assignment1CarlosAlves.Controllers
                     customerToSave.ZipCode = newCustomer.ZipCode;
                     customerToSave.City = newCustomer.City;
                     customerToSave.State = newCustomer.State;
+                    customerToSave.Address = newCustomer.Address;
 
                 }
                 else
                 {
                     context.Customers.Add(newCustomer);
-                    Console.WriteLine(newCustomer.CustomerID);
+                    //Console.WriteLine(newCustomer.CustomerID);
                     
                 }
                 context.SaveChanges();

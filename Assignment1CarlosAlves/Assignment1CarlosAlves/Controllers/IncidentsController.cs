@@ -117,30 +117,41 @@ namespace Assignment1CarlosAlves.Controllers
         {
             TechSupportEntities context = new TechSupportEntities();
             Incident incident = context.Incidents.Where(i => i.IncidentID.ToString() == id).FirstOrDefault();
+            List<Customer> customers = context.Customers.ToList();
+            List<Product> products = context.Products.ToList();
+            List<Technician> technicians = context.Technicians.ToList();
 
-            return View(incident);
+            UpsertIncidentsModel viewModel = new UpsertIncidentsModel()
+            {
+                Incident = incident,
+                Customers = customers,
+                Products = products,
+                Technicians = technicians,
+
+
+            };
+            return View(viewModel);
 
         }
 
         [HttpPost]
-        public ActionResult UpsertIncidents(Incident newIncident)
+        public ActionResult UpsertIncidents(UpsertIncidentsModel model)
         {
+            Incident newIncident = model.Incident;
             TechSupportEntities context = new TechSupportEntities();
             try
             {
                 if(context.Incidents.Where(i => i.IncidentID == newIncident.IncidentID).Count() > 0 )
                 {
                     var incidentToSave = context.Incidents.Where(i => i.IncidentID == newIncident.IncidentID).FirstOrDefault();
-                    incidentToSave.IncidentID = newIncident.IncidentID;
                     incidentToSave.Title = newIncident.Title;
                     incidentToSave.Description = newIncident.Description;
                     incidentToSave.DateOpened = newIncident.DateOpened;
                     incidentToSave.DateClosed = newIncident.DateClosed;
                     incidentToSave.ProductCode = newIncident.ProductCode;
                     incidentToSave.TechID = newIncident.TechID;
-                    incidentToSave.Customer.CustomerID = newIncident.Customer.CustomerID;
-                    incidentToSave.Product.ProductCode = newIncident.Product.ProductCode;
-                    incidentToSave.Technician.TechID = newIncident.Technician.TechID;
+                    incidentToSave.CustomerID = newIncident.CustomerID;
+                    
                     
                 }
                 else

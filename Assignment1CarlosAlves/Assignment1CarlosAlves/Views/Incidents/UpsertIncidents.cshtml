@@ -1,6 +1,6 @@
-﻿@model Assignment1CarlosAlves.Models.Incident
+﻿@model  Assignment1CarlosAlves.Models.UpsertIncidentsModel
 @{
-    ViewBag.Title = "UpsertIncidents";
+    ViewBag.Title = "Upsert Incidents";
 }
 
 <h2>UpsertIncidents</h2>
@@ -8,50 +8,68 @@
 
 @using (Html.BeginForm("UpsertIncidents", "Incidents", FormMethod.Post))
 {
-    <div class="form-floating mb-3 ">
-        @Html.TextBoxFor(i => i.IncidentID, new { @class = "form-control", @type = "ID", @placeholder = "Incident ID" })
+    @*<div class="form-floating mb-3 ">
+        @Html.TextBoxFor(gm => gm.Incident.IncidentID, new { @class = "form-control", @type = "ID", @placeholder = "Incident ID" })
         <label>Incident ID</label>
 
-    </div>
+    </div>*@
 
     <div class="form-floating mb-3 ">
-        @Html.TextBoxFor(i => i.Title, new { @class = "form-control", @type = "ID", @placeholder = "Incident Title" })
+        @Html.TextBoxFor(gm => gm.Incident.Title, new { @class = "form-control", @type = "ID", @placeholder = "Incident Title" })
         <label>Incident Title</label>
     </div>
     <div class="form-floating mb-3 ">
 
-        @Html.TextBoxFor(i => i.Description, new { @class = "form-control", @type = "ID", @placeholder = "Incident Description" })
+        @Html.TextBoxFor(gm => gm.Incident.Description, new { @class = "form-control", @type = "ID", @placeholder = "Incident Description" })
         <label for="">Incident Description</label>
     </div>
     <div class="form-floating mb-3 ">
-        @Html.TextBoxFor(i => i.DateOpened, new { @class = "form-control", @type = "ID", @placeholder = "Incident Date Opened" })
+        @Html.TextBoxFor(gm => gm.Incident.DateOpened, new { @class = "form-control", @type = "ID", @placeholder = "Incident Date Opened" })
         <label for="">Incident Date Opened</label>
 
     </div>
     <div class="form-floating mb-3 ">
-        @Html.TextBoxFor(i => i.DateClosed, new { @class = "form-control", @type = "ID", @placeholder = "Incident Date Closed" })
+        @Html.TextBoxFor(gm => gm.Incident.DateClosed, new { @class = "form-control", @type = "ID", @placeholder = "Incident Date Closed" })
         <label class="">Incident Date Closed</label>
     </div>
     <div class="form-floating mb-3 ">
-        @Html.TextBoxFor(i => i.ProductCode, new { @class = "form-control", @type = "ID", @placeholder = "Product Code" })
-        <label class="">Product Code</label>
+        <select name="Model.Products.PoductCode" class="form-control ">
+
+            @foreach (var product in Model.Products)
+            {
+                <option class="form-control " type="ID" placeholder="Product Code" vlaue="@product.ProductCode">@product.ProductCode</option>
+            }
+        </select>
     </div>
     <div class="form-floating mb-3 ">
-        @Html.TextBoxFor(i => i.TechID, new { @class = "form-control", @type = "ID", @placeholder = "Technician ID" })
-        <label class="">Technician id</label>
+        <select name="Model.Customer.CustomerID" class="form-control ">
+
+            @foreach (var technician in Model.Technicians)
+            {
+                <option class="form-control " type="ID" placeholder="Technician ID" vlaue="@technician.TechID">@technician.TechID</option>
+            }
+        </select>
     </div>
-    <div class="form-floating mb-3 ">
-        @Html.TextBoxFor(i => i.Technician, new { @class = "form-control", @type = "ID", @placeholder = "Technician" })
+    @*<div class="form-floating mb-3 ">
+        @foreach (var technician in Model.Technicians)
+        {
+            <label class="">Technician ID</label>
+            <option class="form-control" type="ID" placeholder="Technician ID" vlaue="@technician.TechID"></option>
+        }
+        @Html.TextBoxFor(gm => gm.Technician, new { @class = "form-control", @type = "ID", @placeholder = "Technician" })
         <label class="">Technician </label>
-    </div>
-    <div class="form-floating mb-3 ">
-        @Html.TextBoxFor(i => i.Customer, new { @class = "form-control", @type = "ID", @placeholder = "Customer" })
-        <label class="">Customer</label>
-    </div>
-    <div class="form-floating mb-3 ">
-        @Html.TextBoxFor(i => i.Product, new { @class = "form-control", @type = "ID", @placeholder = "Product" })
-        <label class="">Product</label>
-    </div>
+    </div>*@
+<div class="form-floating mb-3 ">
+    <select name="Model.Customer.CustomerID" class="form-control ">
+
+        @foreach (var customers in Model.Customers)
+        {
+            <option class="form-control " type="ID" placeholder="Customer ID" vlaue="@customers.CustomerID">@customers.CustomerID</option>
+        }
+    </select>
+    
+</div>
+
 
     <input type="submit" value="submit" class="btn btn-info" />
 }
